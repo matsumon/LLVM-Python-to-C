@@ -1,0 +1,264 @@
+{
+  "tests": [
+    {
+      "name": "Setup compiler toolchain &#40;Flex&#44; Bison&#44; LLVM&#41;",
+      "setup": "wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -",
+      "run": "sudo add-apt-repository \"deb http://apt.llvm.org/focal/ llvm-toolchain-focal-13 main\" && sudo apt-get update && sudo apt-get install -y llvm-13-dev bison flex",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 0
+    },
+    {
+      "name": "Setup bats &#40;for unit testing&#41;",
+      "setup": "git clone https://github.com/bats-core/bats-core.git",
+      "run": "cd bats-core && sudo ./install.sh /usr/local",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 0
+    },
+    {
+      "name": "Correct LLVM IR generated for straightline_1.py",
+      "setup": "make",
+      "run": "bats -f straightline_1 tests/straightline_llvm_ir.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Correct LLVM IR generated for straightline_2.py",
+      "setup": "make",
+      "run": "bats -f straightline_2 tests/straightline_llvm_ir.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Correct LLVM IR generated for straightline_3.py",
+      "setup": "make",
+      "run": "bats -f straightline_3 tests/straightline_llvm_ir.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Correct LLVM IR generated for straightline_4.py",
+      "setup": "make",
+      "run": "bats -f straightline_4 tests/straightline_llvm_ir.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Correct LLVM IR generated for straightline_5.py",
+      "setup": "make",
+      "run": "bats -f straightline_5 tests/straightline_llvm_ir.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Correct LLVM IR generated for ifelse_1.py",
+      "setup": "make",
+      "run": "bats -f ifelse_1 tests/ifelse_llvm_ir.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 6
+    },
+    {
+      "name": "Correct LLVM IR generated for ifelse_2.py",
+      "setup": "make",
+      "run": "bats -f ifelse_2 tests/ifelse_llvm_ir.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 6
+    },
+    {
+      "name": "Correct LLVM IR generated for ifelse_3.py",
+      "setup": "make",
+      "run": "bats -f ifelse_3 tests/ifelse_llvm_ir.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 6
+    },
+    {
+      "name": "Correct LLVM IR generated for ifelse_4.py",
+      "setup": "make",
+      "run": "bats -f ifelse_4 tests/ifelse_llvm_ir.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 6
+    },
+    {
+      "name": "Correct LLVM IR generated for ifelse_5.py",
+      "setup": "make",
+      "run": "bats -f ifelse_5 tests/ifelse_llvm_ir.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 6
+    },
+    {
+      "name": "Correct object code generated for straightline_1.py",
+      "setup": "make",
+      "run": "bats -f straightline_1 tests/straightline_obj_code.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    },
+    {
+      "name": "Correct object code generated for straightline_2.py",
+      "setup": "make",
+      "run": "bats -f straightline_2 tests/straightline_obj_code.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    },
+    {
+      "name": "Correct object code generated for straightline_3.py",
+      "setup": "make",
+      "run": "bats -f straightline_3 tests/straightline_obj_code.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    },
+    {
+      "name": "Correct object code generated for straightline_4.py",
+      "setup": "make",
+      "run": "bats -f straightline_4 tests/straightline_obj_code.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    },
+    {
+      "name": "Correct object code generated for straightline_5.py",
+      "setup": "make",
+      "run": "bats -f straightline_5 tests/straightline_obj_code.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    },
+    {
+      "name": "Correct object code generated for ifelse_1.py",
+      "setup": "make",
+      "run": "bats -f ifelse_1 tests/ifelse_obj_code.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    },
+    {
+      "name": "Correct object code generated for ifelse_2.py",
+      "setup": "make",
+      "run": "bats -f ifelse_2 tests/ifelse_obj_code.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    },
+    {
+      "name": "Correct object code generated for ifelse_3.py",
+      "setup": "make",
+      "run": "bats -f ifelse_3 tests/ifelse_obj_code.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    },
+    {
+      "name": "Correct object code generated for ifelse_4.py",
+      "setup": "make",
+      "run": "bats -f ifelse_4 tests/ifelse_obj_code.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    },
+    {
+      "name": "Correct object code generated for ifelse_5.py",
+      "setup": "make",
+      "run": "bats -f ifelse_5 tests/ifelse_obj_code.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    },
+    {
+      "name": "Extra Credit&#58; Correct LLVM IR generated for while_1.py",
+      "setup": "make",
+      "run": "bats -f while_1 tests/while_llvm_ir.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    },
+    {
+      "name": "Extra Credit&#58; Correct LLVM IR generated for while_2.py",
+      "setup": "make",
+      "run": "bats -f while_2 tests/while_llvm_ir.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    },
+    {
+      "name": "Extra Credit&#58; Correct LLVM IR generated for while_3.py",
+      "setup": "make",
+      "run": "bats -f while_3 tests/while_llvm_ir.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    },
+    {
+      "name": "Extra Credit&#58; Correct LLVM IR generated for while_4.py",
+      "setup": "make",
+      "run": "bats -f while_4 tests/while_llvm_ir.bats",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    }
+  ]
+}
