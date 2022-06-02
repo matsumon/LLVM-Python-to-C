@@ -6,6 +6,9 @@
 extern int yylex();
 
 extern ASTBlock* programBlock;
+extern llvm::LLVMContext TheContext;
+extern llvm::IRBuilder<> TheBuilder(TheContext);
+extern llvm::Module* TheModule;
 
 int main() {
   TheModule = new llvm::Module("target", TheContext);
@@ -28,7 +31,7 @@ int main() {
       std::cout << generateGVSpec(programBlock);
     }
   }
-  
+
   TheBuilder.CreateRet(variableValue("b"));
 
   llvm::verifyFunction(*foo);
