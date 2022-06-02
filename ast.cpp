@@ -245,10 +245,10 @@ llvm::Value* ASTIdentifier::generateLLVM()const{
 }
 
 llvm::Value * ASTAssignmentStatement::generateLLVM()const{
-  // llvm::Value * newRHS = rhs->generateLLVM();
-  llvm::Value * newLHS = lhs->generateLLVM();
-  const std::string name = *lhs->name;
-  std::cout<<"Name "<<name<<std::endl;
+  llvm::Value * newRHS = rhs->generateLLVM();
+  // llvm::Value * newLHS = lhs->generateLLVM();
+  // const std::string name = *lhs->name;
+  // std::cout<<"Name "<<name<<std::endl;
   // return  assignmentStatement("a", newRHS);
   return  assignmentStatement("return_value", newRHS);
 }
