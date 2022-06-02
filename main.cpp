@@ -19,7 +19,7 @@ int main() {
   }
 std::cout<<"HERE"<<std::endl;
   llvm::verifyFunction(*foo);
-std::cout<<"HERE"<<std::endl;
+std::cout<<"HERE"<<llvm::verifyFunction(*foo)<<std::endl;
   TheModule->print(llvm::outs(), NULL);
 std::cout<<"HERE"<<std::endl;
 }
