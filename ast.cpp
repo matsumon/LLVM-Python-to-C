@@ -225,11 +225,11 @@ llvm::Value * ASTFloat::generateLLVM(){
   return numericConstant(value);
 }
 
-llvm::Value * ASTIdentifier::generateLLVM(){
+std::string ASTIdentifier::generateLLVM(){
   if(!TheSymbolTable.count(*name)){
     TheSymbolTable[*name] = NULL;
   }
-  return name;
+  return *name;
 }
 
 llvm::Value * ASTAssignmentStatement::generateLLVM(){
