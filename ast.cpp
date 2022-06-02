@@ -220,3 +220,5 @@ llvm::Value* assignmentStatement(std::string lhs, llvm::Value* rhs) {
   }
   return TheBuilder.CreateStore(rhs, TheSymbolTable[lhs]);
 }
+
+llvm::Value * ASTIdentifier::generateLLVM(){return NULL;}
