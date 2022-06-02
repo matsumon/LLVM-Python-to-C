@@ -242,5 +242,7 @@ llvm::Value * ASTAssignmentStatement::generateLLVM(){
 }
 
 void generateLLVM(ASTNode* node) {
-  node->generateLLVM();
+  for (int i = 0; i < this->statements.size(); i++) {
+    this->statements[i]->generateLLVM();
+  }
 }
