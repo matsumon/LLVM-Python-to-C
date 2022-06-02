@@ -241,8 +241,12 @@ llvm::Value * ASTAssignmentStatement::generateLLVM(){
   // return NULL;
 }
 
-void generateLLVM(ASTNode* node) {
-  for (int i = 0; i < node->statements.size(); i++) {
-    node->statements[i]->generateLLVM();
+void ASTBlock::generateLLVM() {
+  for (int i = 0; i < this->statements.size(); i++) {
+    this->statements[i]->generateLLVM();
   }
+}
+
+void generateLLVM(ASTNode* node) {
+    node->generateLLVM();
 }
