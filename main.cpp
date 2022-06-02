@@ -9,7 +9,7 @@ extern ASTBlock* programBlock;
 extern llvm::LLVMContext TheContext;
 extern llvm::IRBuilder<> TheBuilder;
 extern llvm::Module* TheModule;
-
+extern std::map<std::string, llvm::Value*> TheSymbolTable;
 int main() {
   llvm::Function* foo = initializeLLVM();
   if (!yylex()) {
