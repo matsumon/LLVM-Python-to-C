@@ -234,5 +234,6 @@ llvm::Value* ASTIdentifier::generateLLVM(){
 }
 
 llvm::Value * ASTAssignmentStatement::generateLLVM(){
+  std::cout<<rhs<<"HERE"<<std::endl;
   return  assignmentStatement(lhs->name, rhs->(*value));
 }
