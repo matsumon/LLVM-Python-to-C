@@ -18,6 +18,7 @@ int main() {
     }
   }
   traverseLLVM(programBlock);
+  TheBuilder.CreateRet(variableValue("return_value"));
   std::cout<<"main.cpp 21"<<std::endl;
   llvm::raw_os_ostream OS(std::cout);
   llvm::verifyFunction(*foo,  &OS);

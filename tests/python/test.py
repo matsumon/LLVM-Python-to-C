@@ -1,1 +1,1 @@
-a=2
+return_value=2
