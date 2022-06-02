@@ -292,5 +292,5 @@ std::string generateGVSpec(ASTNode* node);
 llvm::Value* variableValue(std::string name);
 
 
-void initializeLLVM();
+llvm::Function* initializeLLVM();
 #endif

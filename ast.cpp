@@ -177,7 +177,7 @@ void ASTBreakStatement::generateGVSpec(std::string nodeName, std::string& gvSpec
   gvSpec += "  " + nodeName + " [label=\"Break\"];\n";
 }
 
-void initializeLLVM(){
+llvm::Function* initializeLLVM(){
 
   TheModule = new llvm::Module("target", TheContext);
 
@@ -193,4 +193,6 @@ void initializeLLVM(){
     TheContext, "entry", foo
   );
   TheBuilder.SetInsertPoint(entryBlock);
+
+  return foo;
 }
