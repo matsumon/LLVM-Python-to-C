@@ -6,9 +6,9 @@
 extern int yylex();
 extern ASTBlock* programBlock;
 
-// extern llvm::LLVMContext TheContext;
-// extern llvm::IRBuilder<> TheBuilder;
-// extern llvm::Module* TheModule;
+extern llvm::LLVMContext TheContext;
+extern llvm::IRBuilder<> TheBuilder;
+extern llvm::Module* TheModule;
 int main() {
   llvm::Function* foo = initializeLLVM();
   if (!yylex()) {
