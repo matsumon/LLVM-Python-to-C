@@ -7,7 +7,7 @@ extern int yylex();
 
 extern ASTBlock* programBlock;
 extern llvm::LLVMContext TheContext;
-extern llvm::IRBuilder<> TheBuilder(TheContext);
+extern llvm::IRBuilder<> TheBuilder;
 extern llvm::Module* TheModule;
 
 int main() {
