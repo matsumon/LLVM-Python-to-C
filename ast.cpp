@@ -239,3 +239,7 @@ llvm::Value * ASTAssignmentStatement::generateLLVM(){
   return  assignmentStatement(*lhs->name, numericConstant(2));
   // return NULL;
 }
+
+void generateLLVM(ASTNode* node) {
+  node->generateLLVM();
+}
