@@ -17,9 +17,7 @@ int main() {
       std::cout << generateGVSpec(programBlock);
     }
   }
-
-  // TheBuilder.CreateRet(variableValue("b"));
-
+std::cout<<"HERE"<<std::endl;
   llvm::verifyFunction(*foo);
   TheModule->print(llvm::outs(), NULL);
 }
