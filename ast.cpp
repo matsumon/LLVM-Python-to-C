@@ -3,8 +3,6 @@
 #include "ast.hpp"
 #include "parser.hpp"
 
-static std::map<std::string, llvm::Value*> TheSymbolTable;
-
 llvm::Value* variableValue(std::string name) {
   llvm::Value* ptr = TheSymbolTable[name];
   if (!ptr) {

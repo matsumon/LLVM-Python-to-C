@@ -33,6 +33,7 @@
 static llvm::LLVMContext TheContext;
 static llvm::IRBuilder<> TheBuilder(TheContext);
 static llvm::Module* TheModule;
+static std::map<std::string, llvm::Value*> TheSymbolTable;
 
 /*
  * Abstract class representing a generic node in an AST.
