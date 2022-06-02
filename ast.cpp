@@ -8,6 +8,20 @@ static llvm::IRBuilder<> TheBuilder(TheContext);
 static llvm::Module* TheModule;
 
 static std::map<std::string, llvm::Value*> TheSymbolTable;
+
+llvm::Value* variableValue(std::string name) {
+  llvm::Value* ptr = TheSymbolTable[name];
+  if (!ptr) {
+    std::cerr << "Unknown variable name: " << name << std::endl;
+    return NULL;
+  }
+  return TheBuilder.CreateLoad(
+    llvm::Type::getFloatTy(TheContext),
+    ptr,
+    name.c_str()
+  );
+}
+
 /*
  * Simple template function to convert a value of any type to a string
  * representation.  The type must have an insertion operator (i.e. operator<<).
