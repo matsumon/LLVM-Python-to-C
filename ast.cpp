@@ -236,7 +236,7 @@ llvm::Value* ASTIdentifier::generateLLVM()const{
   if(!TheSymbolTable.count(*name)){
     TheSymbolTable[*name] = NULL;
   }
-  return NULL;
+  return numericConstant(TheSymbolTable[*name]);
 }
 
 llvm::Value * ASTAssignmentStatement::generateLLVM()const{
@@ -249,12 +249,7 @@ llvm::Value * ASTAssignmentStatement::generateLLVM()const{
 
 llvm::Value * ASTBlock::generateLLVM()const{
   llvm::Value * llvmValue;
-  // for (int i = 0; i < statements.size(); i++) {
-  //   llvmValue= statements[i]->generateLLVM();
-  // }
-    for (int i = 0; i < this->statements.size(); i++) {
-    // std::string childNodeName = nodeName + "_" + toString(i);
-    // gvSpec += "  " + nodeName + " -> " + childNodeName + " [label=\" " + toString(i) + "\"];\n";
+  for (int i = 0; i < this->statements.size(); i++) {
     this->statements[i]->generateLLVM();
   }
   return NULL;
