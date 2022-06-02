@@ -249,7 +249,7 @@ void ASTBlock::generateLLVM()const{
     for (int i = 0; i < this->statements.size(); i++) {
     // std::string childNodeName = nodeName + "_" + toString(i);
     // gvSpec += "  " + nodeName + " -> " + childNodeName + " [label=\" " + toString(i) + "\"];\n";
-    // this->statements[i]->generateGVSpec(childNodeName, gvSpec);
+    this->statements[i]->generateLLVM();
   }
 }
 
