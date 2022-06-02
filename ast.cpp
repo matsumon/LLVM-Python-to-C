@@ -182,11 +182,11 @@ llvm::Function* initializeLLVM(){
   return foo;
 }
 
-llvm::Value* numericConstant(float val) {
+llvm::Value* numericConstant(float val) const{
   return llvm::ConstantFP::get(TheContext, llvm::APFloat(val));
 }
 
-llvm::Value* variableValue(std::string name) {
+llvm::Value* variableValue(std::string name) const{
   llvm::Value* ptr = TheSymbolTable[name];
   if (!ptr) {
     std::cerr << "Unknown variable name: " << name << std::endl;
@@ -199,7 +199,7 @@ llvm::Value* variableValue(std::string name) {
   );
 }
 
-llvm::Value* generateEntryBlockAlloca(std::string name) {
+llvm::Value* generateEntryBlockAlloca(std::string name) const{
   llvm::Function* currFn = TheBuilder.GetInsertBlock()->getParent();
   llvm::IRBuilder<> tmpBuilder(
     &currFn->getEntryBlock(),
@@ -210,7 +210,7 @@ llvm::Value* generateEntryBlockAlloca(std::string name) {
   );
 }
 
-llvm::Value* assignmentStatement(std::string lhs, llvm::Value* rhs) {
+llvm::Value* assignmentStatement(std::string lhs, llvm::Value* rhs)const {
   if (!rhs) {
     return NULL;
   }
@@ -221,11 +221,11 @@ llvm::Value* assignmentStatement(std::string lhs, llvm::Value* rhs) {
   return TheBuilder.CreateStore(rhs, TheSymbolTable[lhs]);
 }
 
-llvm::Value * ASTFloat::generateLLVM(){
+llvm::Value * ASTFloat::generateLLVM()const{
   return numericConstant(value);
 }
 
-llvm::Value* ASTIdentifier::generateLLVM(){
+llvm::Value* ASTIdentifier::generateLLVM()const{
   if(!TheSymbolTable.count(*name)){
     TheSymbolTable[*name] = NULL;
   }
@@ -233,7 +233,7 @@ llvm::Value* ASTIdentifier::generateLLVM(){
   // return *name;
 }
 
-llvm::Value * ASTAssignmentStatement::generateLLVM(){
+llvm::Value * ASTAssignmentStatement::generateLLVM()const{
   std::cout<<rhs<<"ast.cpp line 237"<<std::endl;
    TheBuilder.CreateRet(variableValue("a"));
   // return  assignmentStatement(*lhs->name, numericConstant(2));
@@ -248,6 +248,6 @@ void ASTBlock::generateLLVM() const{
   }
 }
 
-void traverseLLVM(ASTNode* node){
+void traverseLLVM(ASTNode* node)const{
     node->generateLLVM();
 }
