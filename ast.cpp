@@ -242,8 +242,8 @@ llvm::Value * ASTAssignmentStatement::generateLLVM(){
 }
 
 void ASTBlock::generateLLVM() const{
-  for (int i = 0; i < this->statements.size(); i++) {
-    this->statements[i]->generateLLVM();
+  for (int i = 0; i < statements.size(); i++) {
+    statements[i]->generateLLVM();
   }
 }
 
