@@ -284,5 +284,5 @@ class ASTBreakStatement : public ASTStatement {
  *   visualize the AST subtree rooted at node.
  */
 std::string generateGVSpec(ASTNode* node);
-
+llvm::Value* variableValue(std::string name);
 #endif
