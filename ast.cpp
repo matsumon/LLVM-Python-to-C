@@ -241,7 +241,7 @@ llvm::Value* ASTIdentifier::generateLLVM()const{
     TheSymbolTable[*name] = NULL;
   }
   // return TheSymbolTable[*name];
-  return NULL;
+  return variableValue(*name);
 }
 
 llvm::Value * ASTAssignmentStatement::generateLLVM()const{
