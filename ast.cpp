@@ -220,6 +220,7 @@ llvm::Value* generateEntryBlockAlloca(std::string name){
 llvm::Value* assignmentStatement(std::string lhs, llvm::Value* rhs) {
   std::cout<<"STRING LHS "<<lhs<<std::endl;
   if (rhs == NULL) {
+  std::cout<<"STRING LHS "<<lhs<<std::endl;
     return NULL;
   }
 
