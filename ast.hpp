@@ -43,7 +43,7 @@ class ASTNode {
 public:
   virtual ~ASTNode() {}
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const = 0;
-  virtual llvm::Value * generateLLVM() const = 0;
+  virtual llvm::Value * generateLLVM();
 };
 
 
@@ -213,7 +213,7 @@ public:
     }
   }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  void generateLLVM();
+  void generateLLVM() const;
 };
 
 
