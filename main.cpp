@@ -21,6 +21,6 @@ std::cout<<"HERE"<<std::endl;
 llvm::raw_ostream* OS = nullptr;
   llvm::verifyFunction(*foo,  OS);
 std::cout<<"Verify Function:  "<<llvm::verifyFunction(*foo)<<" "<<OS<<std::endl;
-  TheModule->print(llvm::outs(), NULL);
+  // TheModule->print(llvm::outs(), NULL);
 std::cout<<"HERE"<<std::endl;
 }
