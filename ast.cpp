@@ -237,13 +237,12 @@ llvm::Value* ASTIdentifier::generateLLVM()const{
     TheSymbolTable[*name] = NULL;
   }
   return NULL;
-  // return *name;
 }
 
 llvm::Value * ASTAssignmentStatement::generateLLVM()const{
   std::cout<<rhs<<"ast.cpp line 237"<<std::endl;
   llvm::Value * newRHS = rhs->generateLLVM();
-  return  assignmentStatement(*newRHS->name, numericConstant(2));
+  return  assignmentStatement(rhs->name, numericConstant(2));
 }
 
 llvm::Value * ASTBlock::generateLLVM()const{
