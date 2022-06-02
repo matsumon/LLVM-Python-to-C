@@ -34,7 +34,7 @@ test:
 	flex -o scanner.cpp scanner.l
 	bison -d -o parser.cpp parser.y
 	git pull
-	g++ ${CFLAGS} main.cpp ast.cpp parser.cpp scanner.cpp llvm.cpp \
+	g++ ${CFLAGS} main.cpp ast.cpp parser.cpp scanner.cpp\
 		-Wno-deprecated-register \
 		$(shell $(LLVM_CONFIG) --cppflags --ldflags --libs --system-libs all) \
 		-o compile
