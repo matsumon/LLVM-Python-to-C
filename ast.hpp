@@ -29,6 +29,11 @@
 #include "llvm/IR/Module.h"
 #include "llvm/IR/Verifier.h"
 #include "llvm/IR/Value.h"
+
+static llvm::LLVMContext TheContext;
+static llvm::IRBuilder<> TheBuilder(TheContext);
+static llvm::Module* TheModule;
+
 /*
  * Abstract class representing a generic node in an AST.
  */
@@ -285,4 +290,7 @@ class ASTBreakStatement : public ASTStatement {
  */
 std::string generateGVSpec(ASTNode* node);
 llvm::Value* variableValue(std::string name);
+
+
+void initializeLLVM();
 #endif

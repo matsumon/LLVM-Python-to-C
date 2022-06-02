@@ -176,3 +176,21 @@ void ASTWhileStatement::generateGVSpec(std::string nodeName, std::string& gvSpec
 void ASTBreakStatement::generateGVSpec(std::string nodeName, std::string& gvSpec) const {
   gvSpec += "  " + nodeName + " [label=\"Break\"];\n";
 }
+
+void initializeLLVM(){
+
+  TheModule = new llvm::Module("target", TheContext);
+
+  llvm::FunctionType* fooPrototype = llvm::FunctionType::get(
+    llvm::Type::getFloatTy(TheContext), false
+  );
+  llvm::Function* foo = llvm::Function::Create(
+    fooPrototype, llvm::GlobalValue::ExternalLinkage,
+    "foo", TheModule
+  );
+
+  llvm::BasicBlock* entryBlock = llvm::BasicBlock::Create(
+    TheContext, "entry", foo
+  );
+  TheBuilder.SetInsertPoint(entryBlock);
+}
