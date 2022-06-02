@@ -18,6 +18,7 @@ int main() {
     }
   }
 generateLLVM(programBlock);
+std::cout<<*programBlock->lhs->name<<std::endl;
 std::cout<<"main.cpp 21"<<std::endl;
 llvm::raw_ostream* OS = nullptr;
   llvm::verifyFunction(*foo,  OS);
