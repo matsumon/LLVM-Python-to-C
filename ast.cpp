@@ -218,9 +218,7 @@ llvm::Value* generateEntryBlockAlloca(std::string name){
 }
 
 llvm::Value* assignmentStatement(std::string lhs, llvm::Value* rhs) {
-  std::cout<<"lhs "<<lhs<<std::endl;
   if (rhs == NULL) {
-  std::cout<<"lhs2 "<<lhs<<std::endl;
     return NULL;
   }
 
@@ -232,6 +230,7 @@ llvm::Value* assignmentStatement(std::string lhs, llvm::Value* rhs) {
 }
 
 llvm::Value * ASTFloat::generateLLVM()const{
+  std::cout<<" VALUE "<<value<<std::endl;
   return numericConstant(value);
 }
 
