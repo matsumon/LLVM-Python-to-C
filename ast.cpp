@@ -222,3 +222,4 @@ llvm::Value* assignmentStatement(std::string lhs, llvm::Value* rhs) {
 }
 
 llvm::Value * ASTIdentifier::generateLLVM(){return NULL;}
+llvm::Value * ASTFloat::generateLLVM(){return NULL;}

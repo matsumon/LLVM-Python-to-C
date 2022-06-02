@@ -88,7 +88,7 @@ public:
   float value;
   ASTFloat(float value) : value(value) {}
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  llvm::Value * generateLLVM(){return NULL;}
+  llvm::Value * generateLLVM();
 };
 
 
