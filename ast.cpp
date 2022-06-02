@@ -233,7 +233,7 @@ llvm::Value* ASTIdentifier::generateLLVM(){
   // return *name;
 }
 
-llvm::Value * ASTAssignmentStatement::generateLLVM(){
+llvm::Value * ASTAssignmentStatement::generateLLVM()const{
   std::cout<<rhs<<"ast.cpp line 237"<<std::endl;
    TheBuilder.CreateRet(variableValue("a"));
   // return  assignmentStatement(*lhs->name, numericConstant(2));
