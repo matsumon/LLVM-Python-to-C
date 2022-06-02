@@ -242,7 +242,7 @@ llvm::Value* ASTIdentifier::generateLLVM()const{
 
 llvm::Value * ASTAssignmentStatement::generateLLVM()const{
   std::cout<<rhs<<"ast.cpp line 237"<<std::endl;
-  llvm::Value * newRHS = rhs->generateLLVM()
+  llvm::Value * newRHS = rhs->generateLLVM();
   return  assignmentStatement(*newRHS->name, numericConstant(2));
 }
 
