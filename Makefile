@@ -38,7 +38,7 @@ test:
 		-Wno-deprecated-register \
 		$(shell $(LLVM_CONFIG) --cppflags --ldflags --libs --system-libs all) \
 		-o compile
-	# ./tests/python/test.py > ./compile > target.ll
+	./tests/python/test.py > ./compile > target.ll
 	llc -filetype=obj target.ll
 	gcc target.c target.o -o target
 	./target
