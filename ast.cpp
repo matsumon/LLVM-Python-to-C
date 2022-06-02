@@ -3,6 +3,11 @@
 #include "ast.hpp"
 #include "parser.hpp"
 
+static llvm::LLVMContext TheContext;
+static llvm::IRBuilder<> TheBuilder(TheContext);
+static llvm::Module* TheModule;
+
+static std::map<std::string, llvm::Value*> TheSymbolTable;
 /*
  * Simple template function to convert a value of any type to a string
  * representation.  The type must have an insertion operator (i.e. operator<<).
