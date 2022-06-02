@@ -234,7 +234,7 @@ llvm::Value* ASTIdentifier::generateLLVM(){
 }
 
 llvm::Value * ASTAssignmentStatement::generateLLVM(){
-  std::cout<<rhs<<"HERE"<<std::endl;
+  std::cout<<rhs<<"ast.cpp line 237"<<std::endl;
    TheBuilder.CreateRet(variableValue("a"));
   // return  assignmentStatement(*lhs->name, numericConstant(2));
   return  assignmentStatement("a", numericConstant(2));

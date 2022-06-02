@@ -18,7 +18,7 @@ int main() {
     }
   }
 generateLLVM(programBlock);
-std::cout<<"HERE"<<std::endl;
+std::cout<<"main.cpp 21"<<std::endl;
 llvm::raw_ostream* OS = nullptr;
   llvm::verifyFunction(*foo,  OS);
 std::cout<<"Verify Function:  "<<llvm::verifyFunction(*foo)<<" "<<OS<<std::endl;
