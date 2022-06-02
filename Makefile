@@ -31,14 +31,15 @@ clean:
 
 test:
 	rm -f compile target.o scanner.cpp parser.cpp parser.hpp target target.ll
+	git pull
 	flex -o scanner.cpp scanner.l
 	bison -d -o parser.cpp parser.y
-	git pull
-	g++ ${CFLAGS} main.cpp ast.cpp parser.cpp scanner.cpp\
+	g++ ${CFLAGS} main.cpp ast.cpp parser.cpp scanner.cpp \
 		-Wno-deprecated-register \
 		$(shell $(LLVM_CONFIG) --cppflags --ldflags --libs --system-libs all) \
 		-o compile
-	./tests/python/test.py > ./compile // > target.ll
+	./compile < ./tests/python/test.py
+	# ./tests/python/test.py > ./compile > target.ll
 	llc -filetype=obj target.ll
 	gcc target.c target.o -o target
 	./target
