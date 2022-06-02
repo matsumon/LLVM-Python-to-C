@@ -241,13 +241,13 @@ llvm::Value * ASTAssignmentStatement::generateLLVM()const{
   // return NULL;
 }
 
-void ASTBlock::generateLLVM() const{
+void ASTBlock::generateLLVM()const{
   llvm::Value * llvmValue;
   for (int i = 0; i < statements.size(); i++) {
     llvmValue= statements[i]->generateLLVM();
   }
 }
 
-void traverseLLVM(ASTNode* node)const{
+void traverseLLVM(ASTNode* node){
     node->generateLLVM();
 }

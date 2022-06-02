@@ -304,10 +304,10 @@ class ASTBreakStatement : public ASTStatement {
 std::string generateGVSpec(ASTNode* node);
 
 void traverseLLVM(ASTNode* node);
-llvm::Value* variableValue(std::string name)const;
-llvm::Function* initializeLLVM()const;
-llvm::Value* numericConstant(float val)const;
-llvm::Value* variableValue(std::string name)const;
-llvm::Value* generateEntryBlockAlloca(std::string name)const;
-llvm::Value* assignmentStatement(std::string lhs, llvm::Value* rhs)const;
+llvm::Value* variableValue(std::string name);
+llvm::Function* initializeLLVM();
+llvm::Value* numericConstant(float val);
+llvm::Value* variableValue(std::string name);
+llvm::Value* generateEntryBlockAlloca(std::string name);
+llvm::Value* assignmentStatement(std::string lhs, llvm::Value* rhs);
 #endif
