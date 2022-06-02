@@ -250,6 +250,7 @@ llvm::Value * ASTAssignmentStatement::generateLLVM()const{
   // const std::string name = *lhs->name;
   // std::cout<<"Name "<<name<<std::endl;
   // return  assignmentStatement("a", newRHS);
+  //working
   return  assignmentStatement(*lhs->name, newRHS);
 }
 
