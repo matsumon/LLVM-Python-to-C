@@ -17,7 +17,7 @@ int main() {
       std::cout << generateGVSpec(programBlock);
     }
   }
-  generateLLVM(programBlock);
+  traverseLLVM(programBlock);
   std::cout<<"main.cpp 21"<<std::endl;
   llvm::raw_ostream* OS = nullptr;
   llvm::verifyFunction(*foo,  OS);

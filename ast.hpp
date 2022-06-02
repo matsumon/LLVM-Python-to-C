@@ -303,7 +303,7 @@ class ASTBreakStatement : public ASTStatement {
  */
 std::string generateGVSpec(ASTNode* node);
 
-void generateLLVM(ASTNode* node);
+void traverseLLVM(ASTNode* node);
 llvm::Value* variableValue(std::string name);
 llvm::Function* initializeLLVM();
 llvm::Value* numericConstant(float val);
