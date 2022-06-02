@@ -209,3 +209,14 @@ llvm::Value* generateEntryBlockAlloca(std::string name) {
     llvm::Type::getFloatTy(TheContext), 0, name.c_str()
   );
 }
+
+llvm::Value* assignmentStatement(std::string lhs, llvm::Value* rhs) {
+  if (!rhs) {
+    return NULL;
+  }
+
+  if (!TheSymbolTable.count(lhs)) {
+    TheSymbolTable[lhs] = generateEntryBlockAlloca(lhs);
+  }
+  return TheBuilder.CreateStore(rhs, TheSymbolTable[lhs]);
+}

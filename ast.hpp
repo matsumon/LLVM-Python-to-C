@@ -296,4 +296,5 @@ llvm::Function* initializeLLVM();
 llvm::Value* numericConstant(float val);
 llvm::Value* variableValue(std::string name);
 llvm::Value* generateEntryBlockAlloca(std::string name);
+llvm::Value* assignmentStatement(std::string lhs, llvm::Value* rhs);
 #endif
