@@ -70,7 +70,7 @@ public:
   ASTIdentifier(const std::string* name) : name(name) {}
   virtual ~ASTIdentifier() { delete name; }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  std::string generateLLVM();
+  llvm::Value* generateLLVM();
 };
 
 
