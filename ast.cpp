@@ -234,5 +234,5 @@ llvm::Value* ASTIdentifier::generateLLVM(){
 }
 
 llvm::Value * ASTAssignmentStatement::generateLLVM(){
-  return NULL;
+  return  assignmentStatement(lhs->name, rhs->value);
 }
