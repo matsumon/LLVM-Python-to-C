@@ -42,7 +42,7 @@ class ASTNode {
 public:
   virtual ~ASTNode() {}
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const = 0;
-  void generateLLVM(){return;}
+  llvm::Value * generateLLVM(){return NULL;}
 };
 
 
@@ -70,7 +70,7 @@ public:
   ASTIdentifier(const std::string* name) : name(name) {}
   virtual ~ASTIdentifier() { delete name; }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  void generateLLVM(){return;}
+  llvm::Value * generateLLVM(){return NULL;}
 };
 
 
@@ -88,7 +88,7 @@ public:
   float value;
   ASTFloat(float value) : value(value) {}
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  void generateLLVM(){return;}
+  llvm::Value * generateLLVM(){return NULL;}
 };
 
 
@@ -106,7 +106,7 @@ public:
   int value;
   ASTInteger(int value) : value(value) {}
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  void generateLLVM(){return;}
+  llvm::Value * generateLLVM(){return NULL;}
 };
 
 
@@ -124,7 +124,7 @@ public:
   bool value;
   ASTBoolean(bool value) : value(value) {}
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  void generateLLVM(){return;}
+  llvm::Value * generateLLVM(){return NULL;}
 };
 
 
@@ -153,7 +153,7 @@ public:
     const ASTExpression* rhs) : op(op), lhs(lhs), rhs(rhs) {}
   virtual ~ASTBinaryOperatorExpression() { delete lhs; delete rhs; }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  void generateLLVM(){return;}
+  llvm::Value * generateLLVM(){return NULL;}
 };
 
 
@@ -185,7 +185,7 @@ public:
     : lhs(lhs), rhs(rhs) {}
   virtual ~ASTAssignmentStatement() { delete lhs; delete rhs; }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  void generateLLVM(){return;}
+  llvm::Value * generateLLVM(){return NULL;}
 };
 
 
@@ -212,7 +212,7 @@ public:
     }
   }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  void generateLLVM(){return;}
+  llvm::Value * generateLLVM(){return NULL;}
 };
 
 
@@ -249,7 +249,7 @@ public:
     delete elseBlock;
   }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  void generateLLVM(){return;}
+  llvm::Value * generateLLVM(){return NULL;}
 };
 
 
@@ -277,7 +277,7 @@ public:
     delete whileBlock;
   }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  void generateLLVM(){return;}
+  llvm::Value * generateLLVM(){return NULL;}
 };
 
 
@@ -287,7 +287,7 @@ public:
  */
 class ASTBreakStatement : public ASTStatement {
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  void generateLLVM(){return;}
+  llvm::Value * generateLLVM(){return NULL;}
 };
 
 
