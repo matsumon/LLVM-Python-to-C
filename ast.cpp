@@ -210,7 +210,7 @@ llvm::Value* generateEntryBlockAlloca(std::string name) const{
   );
 }
 
-llvm::Value* assignmentStatement(std::string lhs, llvm::Value* rhs)const {
+llvm::Value* assignmentStatement(std::string lhs, llvm::Value* rhs) {
   if (!rhs) {
     return NULL;
   }
