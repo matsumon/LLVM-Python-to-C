@@ -40,6 +40,6 @@ test:
 		-o compile
 	./compile < ./tests/python/test.py
 	# ./tests/python/test.py > ./compile > target.ll
-	llc -filetype=obj target.ll
-	gcc target.c target.o -o target
-	./target
+	# llc -filetype=obj target.ll
+	# gcc target.c target.o -o target
+	# ./target
