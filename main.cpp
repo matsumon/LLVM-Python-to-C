@@ -4,6 +4,7 @@
 #include "parser.hpp"
 
 extern int yylex();
+extern ASTBlock* programBlock;
 
 static llvm::LLVMContext TheContext;
 static llvm::IRBuilder<> TheBuilder(TheContext);
