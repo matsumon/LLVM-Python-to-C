@@ -70,6 +70,7 @@ public:
   ASTIdentifier(const std::string* name) : name(name) {}
   virtual ~ASTIdentifier() { delete name; }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
+  void generateLLVM(){return;}
 };
 
 
@@ -87,6 +88,7 @@ public:
   float value;
   ASTFloat(float value) : value(value) {}
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
+  void generateLLVM(){return;}
 };
 
 
@@ -104,6 +106,7 @@ public:
   int value;
   ASTInteger(int value) : value(value) {}
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
+  void generateLLVM(){return;}
 };
 
 
@@ -121,6 +124,7 @@ public:
   bool value;
   ASTBoolean(bool value) : value(value) {}
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
+  void generateLLVM(){return;}
 };
 
 
@@ -149,6 +153,7 @@ public:
     const ASTExpression* rhs) : op(op), lhs(lhs), rhs(rhs) {}
   virtual ~ASTBinaryOperatorExpression() { delete lhs; delete rhs; }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
+  void generateLLVM(){return;}
 };
 
 
@@ -180,6 +185,7 @@ public:
     : lhs(lhs), rhs(rhs) {}
   virtual ~ASTAssignmentStatement() { delete lhs; delete rhs; }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
+  void generateLLVM(){return;}
 };
 
 
@@ -206,6 +212,7 @@ public:
     }
   }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
+  void generateLLVM(){return;}
 };
 
 
@@ -242,6 +249,7 @@ public:
     delete elseBlock;
   }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
+  void generateLLVM(){return;}
 };
 
 
@@ -269,6 +277,7 @@ public:
     delete whileBlock;
   }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
+  void generateLLVM(){return;}
 };
 
 
@@ -278,6 +287,7 @@ public:
  */
 class ASTBreakStatement : public ASTStatement {
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
+  void generateLLVM(){return;}
 };
 
 
