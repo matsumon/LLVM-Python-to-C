@@ -247,6 +247,6 @@ void ASTBlock::generateLLVM() {
   }
 }
 
-void generateLLVM(ASTNode* node) {
+void generateLLVM(ASTNode* node) const{
     node->generateLLVM();
 }
