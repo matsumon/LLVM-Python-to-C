@@ -29,12 +29,12 @@
 #include "llvm/IR/Module.h"
 #include "llvm/IR/Verifier.h"
 #include "llvm/IR/Value.h"
-#include "llvm/Support/raw_ostream.h"
+#include "llvm/Support/raw_os_ostream.h"
 
-static llvm::LLVMContext TheContext;
-static llvm::IRBuilder<> TheBuilder(TheContext);
-static llvm::Module* TheModule;
-static std::map<std::string, llvm::Value*> TheSymbolTable;
+// llvm::LLVMContext TheContext;
+// llvm::IRBuilder<> TheBuilder(TheContext);
+// llvm::Module* TheModule;
+// std::map<std::string, llvm::Value*> TheSymbolTable;
 
 /*
  * Abstract class representing a generic node in an AST.
@@ -43,7 +43,7 @@ class ASTNode {
 public:
   virtual ~ASTNode() {}
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const = 0;
-  virtual llvm::Value * generateLLVM();
+  virtual llvm::Value * generateLLVM()const{return NULL;};
 };
 
 
@@ -213,7 +213,7 @@ public:
     }
   }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  void generateLLVM() const;
+  llvm::Value * generateLLVM() const;
 };
 
 

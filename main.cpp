@@ -19,8 +19,8 @@ int main() {
   }
   traverseLLVM(programBlock);
   std::cout<<"main.cpp 21"<<std::endl;
-  llvm::raw_ostream* OS = nullptr;
-  llvm::verifyFunction(*foo,  OS);
-  std::cout<<"Verify Function:  "<<llvm::verifyFunction(*foo)<<" "<<OS<<std::endl;
+  llvm::raw_os_ostream OS(std::cout);
+  llvm::verifyFunction(*foo,  &OS);
+  std::cout<<"Verify Function:  "<<llvm::verifyFunction(*foo)<<" "<<std::endl;
   TheModule->print(llvm::outs(), NULL);
 }

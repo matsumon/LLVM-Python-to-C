@@ -3,6 +3,13 @@
 #include "ast.hpp"
 #include "parser.hpp"
 
+
+
+llvm::LLVMContext TheContext;
+llvm::IRBuilder<> TheBuilder(TheContext);
+llvm::Module* TheModule;
+std::map<std::string, llvm::Value*> TheSymbolTable;
+
 /*
  * Simple template function to convert a value of any type to a string
  * representation.  The type must have an insertion operator (i.e. operator<<).
@@ -235,13 +242,13 @@ llvm::Value* ASTIdentifier::generateLLVM()const{
 
 llvm::Value * ASTAssignmentStatement::generateLLVM()const{
   std::cout<<rhs<<"ast.cpp line 237"<<std::endl;
-   TheBuilder.CreateRet(variableValue("a"));
+  //  TheBuilder.CreateRet(variableValue("a"));
   // return  assignmentStatement(*lhs->name, numericConstant(2));
   return  assignmentStatement("a", numericConstant(2));
   // return NULL;
 }
 
-void ASTBlock::generateLLVM()const{
+llvm::Value * ASTBlock::generateLLVM()const{
   llvm::Value * llvmValue;
   // for (int i = 0; i < statements.size(); i++) {
   //   llvmValue= statements[i]->generateLLVM();
@@ -251,6 +258,7 @@ void ASTBlock::generateLLVM()const{
     // gvSpec += "  " + nodeName + " -> " + childNodeName + " [label=\" " + toString(i) + "\"];\n";
     this->statements[i]->generateLLVM();
   }
+  return NULL;
 }
 
 void traverseLLVM(ASTNode* node){
