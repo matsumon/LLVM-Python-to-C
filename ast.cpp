@@ -230,7 +230,6 @@ llvm::Value* assignmentStatement(std::string lhs, llvm::Value* rhs) {
 }
 
 llvm::Value * ASTFloat::generateLLVM()const{
-  std::cout<<" VALUE "<<value<<std::endl;
   return numericConstant(value);
 }
 
@@ -245,9 +244,9 @@ llvm::Value* ASTIdentifier::generateLLVM()const{
 llvm::Value * ASTAssignmentStatement::generateLLVM()const{
   llvm::Value * newRHS = rhs->generateLLVM();
   llvm::Value * newLHS = lhs->generateLLVM();
-  std::string name = *lhs->name;
-  std::cout<<"Name "<<name<<" "<<newRHS<<NULL<<std::endl;
-  return  assignmentStatement(name, newRHS);
+  std::string* name = lhs->name;
+  std::cout<<"Name "<<*name<<std::endl;
+  return  assignmentStatement(*name, newRHS);
 }
 
 llvm::Value * ASTBlock::generateLLVM()const{
