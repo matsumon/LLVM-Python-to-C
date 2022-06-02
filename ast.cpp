@@ -236,7 +236,7 @@ llvm::Value* ASTIdentifier::generateLLVM()const{
   if(!TheSymbolTable.count(*name)){
     TheSymbolTable[*name] = NULL;
   }
-  return numericConstant(TheSymbolTable[*name]);
+  return TheSymbolTable[*name];
 }
 
 llvm::Value * ASTAssignmentStatement::generateLLVM()const{
