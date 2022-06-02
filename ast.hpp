@@ -185,7 +185,7 @@ public:
     : lhs(lhs), rhs(rhs) {}
   virtual ~ASTAssignmentStatement() { delete lhs; delete rhs; }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  llvm::Value * generateLLVM(){return NULL;}
+  llvm::Value * generateLLVM();
 };
 
 

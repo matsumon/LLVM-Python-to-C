@@ -221,7 +221,17 @@ llvm::Value* assignmentStatement(std::string lhs, llvm::Value* rhs) {
   return TheBuilder.CreateStore(rhs, TheSymbolTable[lhs]);
 }
 
-llvm::Value * ASTIdentifier::generateLLVM(){return NULL;}
 llvm::Value * ASTFloat::generateLLVM(){
   return numericConstant(value);
+}
+
+llvm::Value * ASTIdentifier::generateLLVM(){
+  if(!TheSymbolTable.count(*name)){
+    TheSymbolTable[*name] = NULL;
+  }
+  return *name;
+}
+
+llvm::Value * ASTAssignmentStatement::generateLLVM(){
+  return NULL;
 }

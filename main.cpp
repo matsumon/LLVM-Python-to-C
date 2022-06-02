@@ -18,7 +18,7 @@ int main() {
     }
   }
 
-  TheBuilder.CreateRet(variableValue("b"));
+  // TheBuilder.CreateRet(variableValue("b"));
 
   llvm::verifyFunction(*foo);
   TheModule->print(llvm::outs(), NULL);
