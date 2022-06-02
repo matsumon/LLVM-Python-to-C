@@ -71,7 +71,7 @@ public:
   ASTIdentifier(const std::string* name) : name(name) {}
   virtual ~ASTIdentifier() { delete name; }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  llvm::Value* generateLLVM();
+  llvm::Value* generateLLVM()const;
 };
 
 
@@ -89,7 +89,7 @@ public:
   float value;
   ASTFloat(float value) : value(value) {}
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  llvm::Value * generateLLVM();
+  llvm::Value * generateLLVM()const;
 };
 
 
@@ -186,7 +186,7 @@ public:
     : lhs(lhs), rhs(rhs) {}
   virtual ~ASTAssignmentStatement() { delete lhs; delete rhs; }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  llvm::Value * generateLLVM();
+  llvm::Value * generateLLVM()const;
 };
 
 
