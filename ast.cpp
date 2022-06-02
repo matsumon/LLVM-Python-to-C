@@ -3,19 +3,6 @@
 #include "ast.hpp"
 #include "parser.hpp"
 
-llvm::Value* variableValue(std::string name) {
-  llvm::Value* ptr = TheSymbolTable[name];
-  if (!ptr) {
-    std::cerr << "Unknown variable name: " << name << std::endl;
-    return NULL;
-  }
-  return TheBuilder.CreateLoad(
-    llvm::Type::getFloatTy(TheContext),
-    ptr,
-    name.c_str()
-  );
-}
-
 /*
  * Simple template function to convert a value of any type to a string
  * representation.  The type must have an insertion operator (i.e. operator<<).
@@ -193,4 +180,32 @@ llvm::Function* initializeLLVM(){
   TheBuilder.SetInsertPoint(entryBlock);
 
   return foo;
+}
+
+llvm::Value* numericConstant(float val) {
+  return llvm::ConstantFP::get(TheContext, llvm::APFloat(val));
+}
+
+llvm::Value* variableValue(std::string name) {
+  llvm::Value* ptr = TheSymbolTable[name];
+  if (!ptr) {
+    std::cerr << "Unknown variable name: " << name << std::endl;
+    return NULL;
+  }
+  return TheBuilder.CreateLoad(
+    llvm::Type::getFloatTy(TheContext),
+    ptr,
+    name.c_str()
+  );
+}
+
+llvm::Value* generateEntryBlockAlloca(std::string name) {
+  llvm::Function* currFn = TheBuilder.GetInsertBlock()->getParent();
+  llvm::IRBuilder<> tmpBuilder(
+    &currFn->getEntryBlock(),
+    currFn->getEntryBlock().begin()
+  );
+  return tmpBuilder.CreateAlloca(
+    llvm::Type::getFloatTy(TheContext), 0, name.c_str()
+  );
 }

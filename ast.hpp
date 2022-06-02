@@ -290,8 +290,10 @@ class ASTBreakStatement : public ASTStatement {
  *   visualize the AST subtree rooted at node.
  */
 std::string generateGVSpec(ASTNode* node);
+
 llvm::Value* variableValue(std::string name);
-
-
 llvm::Function* initializeLLVM();
+llvm::Value* numericConstant(float val);
+llvm::Value* variableValue(std::string name);
+llvm::Value* generateEntryBlockAlloca(std::string name);
 #endif
