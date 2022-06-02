@@ -213,7 +213,7 @@ public:
     }
   }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  void generateLLVM() const = 0;
+  void generateLLVM();
 };
 
 
