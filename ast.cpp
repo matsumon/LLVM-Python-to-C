@@ -3,10 +3,6 @@
 #include "ast.hpp"
 #include "parser.hpp"
 
-static llvm::LLVMContext TheContext;
-static llvm::IRBuilder<> TheBuilder(TheContext);
-static llvm::Module* TheModule;
-
 static std::map<std::string, llvm::Value*> TheSymbolTable;
 
 llvm::Value* variableValue(std::string name) {

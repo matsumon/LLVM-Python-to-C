@@ -5,10 +5,9 @@
 
 extern int yylex();
 
-extern ASTBlock* programBlock;
-extern llvm::LLVMContext TheContext;
-extern llvm::IRBuilder<> TheBuilder;
-extern llvm::Module* TheModule;
+static llvm::LLVMContext TheContext;
+static llvm::IRBuilder<> TheBuilder(TheContext);
+static llvm::Module* TheModule;
 
 int main() {
   TheModule = new llvm::Module("target", TheContext);
