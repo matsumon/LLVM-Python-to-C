@@ -11,7 +11,7 @@ extern llvm::IRBuilder<> TheBuilder;
 extern llvm::Module* TheModule;
 
 int main() {
-  llvm::FunctionType* foo = initializeLLVM();
+  llvm::Function* foo = initializeLLVM();
   if (!yylex()) {
     if (programBlock) {
       std::cout << generateGVSpec(programBlock);
