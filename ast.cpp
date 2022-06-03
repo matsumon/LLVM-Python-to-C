@@ -331,8 +331,8 @@ llvm::Value * booleanFunction(llvm::Value * lhs){
       return TheBuilder.CreateFCmpUEQ(lhs, rhs, "eqtmp");
 }
 llvm::Value * ASTIfStatement::generateLLVM()const{
-  llvm::Value* cond = condition->generateLLVM();
-  cond = booleanFunction(cond);
+  llvm::Value* cond2 = condition->generateLLVM();
+  llvm::Value* cond = booleanFunction(cond2);
   llvm::Function* currFn = TheBuilder.GetInsertBlock()->getParent();
 
   llvm::BasicBlock* ifBlockOne = llvm::BasicBlock::Create(
