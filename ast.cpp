@@ -251,6 +251,7 @@ llvm::Value * ASTBlock::generateLLVM()const{
     llvmValue = this->statements[i]->generateLLVM();
     // valueStatements.push_back(llvmValue);
   }
+  return TheBuilder.CreateRet(variableValue("return_value"));
   return NULL;
 }
 llvm::Value * ASTInteger::generateLLVM()const{
