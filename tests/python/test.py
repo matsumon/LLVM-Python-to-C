@@ -1,10 +1,14 @@
 # line 399 hangs if it doesn't run, maybe block?
 # not returning i1 for condition in branches
-pi = 3.1415
-r = 3
-v = 0
-if pi * r * r <= 28:
-    v = pi * r * r
-else:
-    v = pi * 2 * r
-return_value = v
+a = True
+b = False
+x = 7
+y = 1
+if a:
+    x = 5
+    if b:
+        y = 4
+    else:
+        y = 2
+
+z = (x * 3 * 7) / y
