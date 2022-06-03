@@ -258,10 +258,10 @@ llvm::Value * ASTInteger::generateLLVM()const{
 }
 llvm::Value * ASTBoolean::generateLLVM()const{
   llvm::Value * newLHS = numericConstant((float)value);
-  newLHS = TheBuilder.CreateFCmpUGE(newLHS, numericConstant((float)1), "gtetmp");
+  newLHS = TheBuilder.CreateICmpUGE(newLHS, numericConstant((float)1), "gtetmp");
   return TheBuilder.CreateUIToFP(
     newLHS,
-    llvm::Type::getBFloatTy(TheContext),
+    llvm::Type::getFloatTy(TheContext),
     "gtebooltmp"
   );
   // return numericConstant((float)value);
