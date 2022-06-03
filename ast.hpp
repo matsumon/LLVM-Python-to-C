@@ -107,7 +107,7 @@ public:
   int value;
   ASTInteger(int value) : value(value) {}
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  llvm::Value * generateLLVM(){return NULL;}
+  llvm::Value * generateLLVM() const;
 };
 
 
