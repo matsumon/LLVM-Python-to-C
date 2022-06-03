@@ -21,6 +21,6 @@ int main() {
   TheBuilder.CreateRet(variableValue("return_value"));
   llvm::verifyFunction(*target);
   // std::cout<<"Verify Function:  "<<llvm::verifyFunction(*target)<<" "<<std::endl;
-  // TheModule->print(llvm::outs(), NULL);
-  generateObjFile("target.o");
+  TheModule->print(llvm::outs(), NULL);
+  // generateObjFile("target.o");
 }
