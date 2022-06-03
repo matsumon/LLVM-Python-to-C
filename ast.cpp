@@ -251,7 +251,7 @@ llvm::Value * ASTBlock::generateLLVM()const{
     llvmValue = this->statements[i]->generateLLVM();
     // valueStatements.push_back(llvmValue);
   }
-  return llvmValue;
+  return NULL;
 }
 llvm::Value * ASTInteger::generateLLVM()const{
   return numericConstant((float)value);
