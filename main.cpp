@@ -17,6 +17,7 @@ int main(int argc, char **argv) {
       generateGVSpec(programBlock);
     }
   }
+  
   traverseLLVM(programBlock);
   TheBuilder.CreateRet(variableValue("return_value"));
   llvm::verifyFunction(*target);
