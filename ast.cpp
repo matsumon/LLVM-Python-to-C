@@ -396,7 +396,7 @@ void generateObjFile(std::string filename) {
   }
   llvm::legacy::PassManager pm;
   targetMachine->addPassesToEmitFile(pm, fd, NULL, llvm::CodeGenFileType::CGFT_ObjectFile);
-  return;
+  // return;
   pm.run(*TheModule);
   fd.close();
 }
