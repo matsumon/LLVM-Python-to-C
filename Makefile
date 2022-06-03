@@ -30,7 +30,7 @@ clean:
 	rm -f compile target.o scanner.cpp parser.cpp parser.hpp
 
 test:
-	rm -f compile target.o scanner.cpp parser.cpp parser.hpp target target.ll
+	rm -f compile target.o scanner.cpp parser.cpp parser.hpp target target.ll target.o
 	git pull
 	flex -o scanner.cpp scanner.l
 	bison -d -o parser.cpp parser.y
