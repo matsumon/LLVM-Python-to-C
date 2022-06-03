@@ -255,6 +255,9 @@ llvm::Value * ASTBlock::generateLLVM()const{
 llvm::Value * ASTInteger::generateLLVM()const{
   return numericConstant((float)value);
 }
+llvm::Value * ASTBoolean::generateLLVM()const{
+  return numericConstant((float)value);
+}
 
 void traverseLLVM(ASTNode* node){
     node->generateLLVM();
