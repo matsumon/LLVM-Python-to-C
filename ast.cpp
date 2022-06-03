@@ -322,12 +322,12 @@ llvm::Value * ASTIfStatement::generateLLVM()const{
     "ifBlock",
     currFn
   );
-  return NULL;
 
   llvm::BasicBlock* elseBlockOne = llvm::BasicBlock::Create(
     TheContext,
     "elseBlock"
   );
+  return NULL;
   llvm::BasicBlock* continuationBlock = llvm::BasicBlock::Create(
     TheContext,
     "continuationBlock"
