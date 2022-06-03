@@ -3,5 +3,7 @@ a = 3.0
 return_value = a
 a = 5
 c = True
-g = 1 + 2
-
+g = 1 - 2
+h = 2 - 1
+i = 3 * 2
+j = 3.0 / 2.0
