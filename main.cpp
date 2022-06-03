@@ -9,7 +9,7 @@ extern ASTBlock* programBlock;
 extern llvm::LLVMContext TheContext;
 extern llvm::IRBuilder<> TheBuilder;
 extern llvm::Module* TheModule;
-int main() {
+int main(int argc, char **argv) {
   llvm::Function* target = initializeLLVM();
   if (!yylex()) {
     if (programBlock) {
@@ -22,5 +22,9 @@ int main() {
   llvm::verifyFunction(*target);
   // std::cout<<"Verify Function:  "<<llvm::verifyFunction(*target)<<" "<<std::endl;
   TheModule->print(llvm::outs(), NULL);
-  generateObjFile("target.o");
+  if(argc > 0){
+    generateObjFile(argc[0]);
+  }else{
+    generateObjFile("target.o");
+  }
 }

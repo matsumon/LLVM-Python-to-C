@@ -4,7 +4,7 @@ a = True
 b = False
 x = 7
 y = 1
-if True:
+if a:
     x = 5
     # if b:
     #     y = 4
