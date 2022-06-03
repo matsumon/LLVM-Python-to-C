@@ -224,7 +224,6 @@ public:
   }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
   llvm::Value * generateLLVM() const;
-  void generateObjFile(std::string filename);
 };
 
 
@@ -315,6 +314,8 @@ class ASTBreakStatement : public ASTStatement {
 std::string generateGVSpec(ASTNode* node);
 
 void traverseLLVM(ASTNode* node);
+void generateObjFile(std::string filename);
+
 llvm::Value* variableValue(std::string name);
 llvm::Function* initializeLLVM();
 llvm::Value* numericConstant(float val);
