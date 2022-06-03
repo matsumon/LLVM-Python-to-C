@@ -280,35 +280,35 @@ llvm::Value * ASTBinaryOperatorExpression::generateLLVM()const{
     case DIVIDEDBY:
       return TheBuilder.CreateFDiv(newLHS, newRHS, "divtmp");
     case LT:
-      newLHS = TheBuilder.CreateFCmpULT(newLHS, newRHS, "lttmp");
+      return = TheBuilder.CreateFCmpULT(newLHS, newRHS, "lttmp");
       return TheBuilder.CreateUIToFP(
         newLHS,
         llvm::Type::getFloatTy(TheContext),
         "ltbooltmp"
       );
     case LTE:
-      newLHS = TheBuilder.CreateFCmpULE(newLHS, newRHS, "ltetmp");
+      return = TheBuilder.CreateFCmpULE(newLHS, newRHS, "ltetmp");
       return TheBuilder.CreateUIToFP(
         newLHS,
         llvm::Type::getFloatTy(TheContext),
         "ltebooltmp"
       );
     case GT:
-      newLHS = TheBuilder.CreateFCmpUGT(newLHS, newRHS, "gttmp");
+      return = TheBuilder.CreateFCmpUGT(newLHS, newRHS, "gttmp");
       return TheBuilder.CreateUIToFP(
         newLHS,
         llvm::Type::getFloatTy(TheContext),
         "gtbooltmp"
       );
     case GTE:
-      newLHS = TheBuilder.CreateFCmpUGE(newLHS, newRHS, "gtetmp");
+      return = TheBuilder.CreateFCmpUGE(newLHS, newRHS, "gtetmp");
       return TheBuilder.CreateUIToFP(
         newLHS,
         llvm::Type::getFloatTy(TheContext),
         "gtebooltmp"
       );
     case NEQ:
-      newLHS = TheBuilder.CreateFCmpUNE(newLHS, newRHS, "netmp");
+      return = TheBuilder.CreateFCmpUNE(newLHS, newRHS, "netmp");
       return TheBuilder.CreateUIToFP(
         newLHS,
         llvm::Type::getFloatTy(TheContext),
