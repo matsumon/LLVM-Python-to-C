@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
   // std::cout<<"Verify Function:  "<<llvm::verifyFunction(*target)<<" "<<std::endl;
   TheModule->print(llvm::outs(), NULL);
   if(argc > 0){
-    generateObjFile(argc[0]);
+    generateObjFile(argv[0]);
   }else{
     generateObjFile("target.o");
   }
