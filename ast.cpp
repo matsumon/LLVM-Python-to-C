@@ -342,7 +342,9 @@ llvm::Value * ASTIfStatement::generateLLVM()const{
 
   currFn->getBasicBlockList().push_back(elseBlockOne);
   TheBuilder.SetInsertPoint(elseBlockOne);
-  llvm::Value* elseStatment = elseBlock->generateLLVM();
+  if(elseBlock){
+    llvm::Value* elseStatment = elseBlock->generateLLVM();
+  }
   // llvm::Value* elseBlockStmt = assignmentStatement("c", aPlusB);
   TheBuilder.CreateBr(continuationBlock);
 
