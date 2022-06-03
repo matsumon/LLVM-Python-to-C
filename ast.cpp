@@ -315,12 +315,12 @@ llvm::Value * ASTIfStatement::generateLLVM()const{
   llvm::Value* cond = condition->generateLLVM();
 
   llvm::Function* currFn = TheBuilder.GetInsertBlock()->getParent();
-  llvm::BasicBlock* ifBlock = llvm::BasicBlock::Create(
+  llvm::BasicBlock* ifBlockOne = llvm::BasicBlock::Create(
     TheContext,
     "ifBlock",
     currFn
   );
-  llvm::BasicBlock* elseBlock = llvm::BasicBlock::Create(
+  llvm::BasicBlock* elseBlockOne = llvm::BasicBlock::Create(
     TheContext,
     "elseBlock"
   );
@@ -329,15 +329,15 @@ llvm::Value * ASTIfStatement::generateLLVM()const{
     "continuationBlock"
   );
 
-  TheBuilder.CreateCondBr(cond, ifBlock, elseBlock);
+  TheBuilder.CreateCondBr(cond, ifBlockOne, elseBlockOne);
 
-  TheBuilder.SetInsertPoint(ifBlock);
+  TheBuilder.SetInsertPoint(ifBlockOne);
   llvm::Value* ifStatement = ifBlock->generateLLVM();
   // llvm::Value* ifBlockStmt = assignmentStatement("c", aTimesB);
   TheBuilder.CreateBr(continuationBlock);
 
-  currFn->getBasicBlockList().push_back(elseBlock);
-  TheBuilder.SetInsertPoint(elseBlock);
+  currFn->getBasicBlockList().push_back(elseBlockOne);
+  TheBuilder.SetInsertPoint(elseBlockOne);
   llvm::Value* elseStatment = elseBlock->generateLLVM();
   // llvm::Value* elseBlockStmt = assignmentStatement("c", aPlusB);
   TheBuilder.CreateBr(continuationBlock);
