@@ -19,10 +19,7 @@ int main() {
   }
   traverseLLVM(programBlock);
   TheBuilder.CreateRet(variableValue("return_value"));
-  std::cout<<"main.cpp 21"<<std::endl;
-  // llvm::raw_os_ostream OS(std::cout);
-  // llvm::verifyFunction(*foo,  &OS);
   llvm::verifyFunction(*foo);
-  std::cout<<"Verify Function:  "<<llvm::verifyFunction(*foo)<<" "<<std::endl;
+  // std::cout<<"Verify Function:  "<<llvm::verifyFunction(*foo)<<" "<<std::endl;
   TheModule->print(llvm::outs(), NULL);
 }

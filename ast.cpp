@@ -218,14 +218,11 @@ llvm::Value* generateEntryBlockAlloca(std::string name){
 }
 
 llvm::Value* assignmentStatement(std::string lhs, llvm::Value* rhs) {
-  std::cout<<"STRING LHS "<<lhs<<std::endl;
   if (rhs == NULL) {
-    std::cout<<"RHS IS NULL "<<rhs<<std::endl;
     return NULL;
   }
 
   if (!TheSymbolTable.count(lhs)) {
-    std::cout<<"SYMBOL TABLE NO COUNT OF "<<lhs<<std::endl;
     TheSymbolTable[lhs] = generateEntryBlockAlloca(lhs);
   }
 
@@ -240,17 +237,11 @@ llvm::Value* ASTIdentifier::generateLLVM()const{
   if(!TheSymbolTable.count(*name)){
     TheSymbolTable[*name] = NULL;
   }
-  // return TheSymbolTable[*name];
   return variableValue(*name);
 }
 
 llvm::Value * ASTAssignmentStatement::generateLLVM()const{
   llvm::Value * newRHS = rhs->generateLLVM();
-  // llvm::Value * newLHS = lhs->generateLLVM();
-  // const std::string name = *lhs->name;
-  // std::cout<<"Name "<<name<<std::endl;
-  // return  assignmentStatement("a", newRHS);
-  //working
   return  assignmentStatement(*lhs->name, newRHS);
 }
 
