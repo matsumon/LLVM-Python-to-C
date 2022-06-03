@@ -299,7 +299,7 @@ llvm::Value * ASTBinaryOperatorExpression::generateLLVM()const{
         "gtebooltmp"
       );
     case NEQ:
-      newLHS = TheBuilder.CreateFCmpUNE()(newLHS, newRHS, "netmp");
+      newLHS = TheBuilder.CreateFCmpUNE(newLHS, newRHS, "netmp");
       return TheBuilder.CreateUIToFP(
         newLHS,
         llvm::Type::getFloatTy(TheContext),
