@@ -277,12 +277,26 @@ llvm::Value * ASTBinaryOperatorExpression::generateLLVM()const{
         llvm::Type::getFloatTy(TheContext),
         "ltbooltmp"
       );
+    case LTE:
+      newLHS = TheBuilder.CreateFCmpULE(newLHS, newRHS, "ltetmp");
+      return TheBuilder.CreateUIToFP(
+        newLHS,
+        llvm::Type::getFloatTy(TheContext),
+        "ltebooltmp"
+      );
     case GT:
-      newLHS = TheBuilder.CreateFCmpULT(newRHS, newLHS, "lttmp");
+      newLHS = TheBuilder.CreateFCmpUGT(newLHS, newRHS, "gttmp");
       return TheBuilder.CreateUIToFP(
         newLHS,
         llvm::Type::getFloatTy(TheContext),
         "gtbooltmp"
+      );
+    case LT:
+      newLHS = TheBuilder.CreateFCmpUGE(newLHS, newRHS, "gtetmp");
+      return TheBuilder.CreateUIToFP(
+        newLHS,
+        llvm::Type::getFloatTy(TheContext),
+        "gtebooltmp"
       );
     default:
       std::cerr << "Invalid operator: " << op << std::endl;
