@@ -311,6 +311,42 @@ llvm::Value * ASTBinaryOperatorExpression::generateLLVM()const{
       return NULL;
   }
 }
+llvm::Value * ASTIfStatement::generateLLVM()const{
+  llvm::Value* cond = condition->generateLLVM()
+
+  llvm::Function* currFn = TheBuilder.GetInsertBlock()->getParent();
+  llvm::BasicBlock* ifBlock = llvm::BasicBlock::Create(
+    TheContext,
+    "ifBlock",
+    currFn
+  );
+  llvm::BasicBlock* elseBlock = llvm::BasicBlock::Create(
+    TheContext,
+    "elseBlock"
+  );
+  llvm::BasicBlock* continuationBlock = llvm::BasicBlock::Create(
+    TheContext,
+    "continuationBlock"
+  );
+
+  TheBuilder.CreateCondBr(cond, ifBlock, elseBlock);
+
+  TheBuilder.SetInsertPoint(ifBlock);
+  llvm::Value* ifStatement = ifBlock->generateLLVM();
+  // llvm::Value* ifBlockStmt = assignmentStatement("c", aTimesB);
+  TheBuilder.CreateBr(continuationBlock);
+
+  currFn->getBasicBlockList().push_back(elseBlock);
+  TheBuilder.SetInsertPoint(elseBlock);
+  llvm::Value* elseStatment = elseBlock->generateLLVM();
+  // llvm::Value* elseBlockStmt = assignmentStatement("c", aPlusB);
+  TheBuilder.CreateBr(continuationBlock);
+
+  currFn->getBasicBlockList().push_back(continuationBlock);
+  TheBuilder.SetInsertPoint(continuationBlock);
+
+  return continuationBlock;
+}
 
 void traverseLLVM(ASTNode* node){
     node->generateLLVM();
