@@ -312,7 +312,7 @@ llvm::Value * ASTBinaryOperatorExpression::generateLLVM()const{
   }
 }
 llvm::Value * ASTIfStatement::generateLLVM()const{
-  llvm::Value* cond = condition->generateLLVM()
+  llvm::Value* cond = condition->generateLLVM();
 
   llvm::Function* currFn = TheBuilder.GetInsertBlock()->getParent();
   llvm::BasicBlock* ifBlock = llvm::BasicBlock::Create(
