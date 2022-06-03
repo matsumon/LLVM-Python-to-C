@@ -22,5 +22,5 @@ int main() {
   llvm::verifyFunction(*target);
   // std::cout<<"Verify Function:  "<<llvm::verifyFunction(*target)<<" "<<std::endl;
   TheModule->print(llvm::outs(), NULL);
-  // generateObjFile("target.o");
+  generateObjFile("target.o");
 }
