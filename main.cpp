@@ -13,7 +13,8 @@ int main() {
   llvm::Function* foo = initializeLLVM();
   if (!yylex()) {
     if (programBlock) {
-      std::cout << generateGVSpec(programBlock);
+      // std::cout << generateGVSpec(programBlock);
+      generateGVSpec(programBlock);
     }
   }
   traverseLLVM(programBlock);
