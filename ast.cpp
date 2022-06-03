@@ -332,8 +332,8 @@ llvm::Value * ASTIfStatement::generateLLVM()const{
     "continuationBlock"
   );
 
-  return NULL;
   TheBuilder.CreateCondBr(cond, ifBlockOne, elseBlockOne);
+  return NULL;
 
   TheBuilder.SetInsertPoint(ifBlockOne);
   llvm::Value* ifStatement = ifBlock->generateLLVM();
