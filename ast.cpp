@@ -311,6 +311,7 @@ llvm::Value * ASTBinaryOperatorExpression::generateLLVM()const{
       return NULL;
   }
 }
+
 llvm::Value * ASTIfStatement::generateLLVM()const{
   llvm::Value* cond = condition->generateLLVM();
 
