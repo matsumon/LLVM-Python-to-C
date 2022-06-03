@@ -248,7 +248,8 @@ llvm::Value * ASTAssignmentStatement::generateLLVM()const{
 llvm::Value * ASTBlock::generateLLVM()const{
   llvm::Value * llvmValue;
   for (int i = 0; i < this->statements.size(); i++) {
-    valueStatements.push_back(this->statements[i]->generateLLVM());
+    llvmValue = this->statements[i]->generateLLVM();
+    valueStatements.push_back(llvmValue);
   }
   return NULL;
 }
