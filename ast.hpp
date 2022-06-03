@@ -263,7 +263,6 @@ public:
   llvm::Value * generateLLVM(){return NULL;}
 };
 
-
 /*
  * Class representing a node in an AST corresponding to a while statement.
  * This is a subclass of the node representing statements.
