@@ -326,13 +326,9 @@ llvm::Value * ASTBinaryOperatorExpression::generateLLVM()const{
       return NULL;
   }
 }
-llvm::Value * booleanFunction(llvm::Value * lhs){
-      llvm::Value * rhs = numericConstant((float)1);
-      return TheBuilder.CreateFCmpUEQ(lhs, rhs, "eqtmp");
-}
+
 llvm::Value * ASTIfStatement::generateLLVM()const{
-  llvm::Value* cond2 = condition->generateLLVM();
-  llvm::Value* cond = booleanFunction(cond2);
+  llvm::Value* cond = condition->generateLLVM();
   llvm::Function* currFn = TheBuilder.GetInsertBlock()->getParent();
 
   llvm::BasicBlock* ifBlockOne = llvm::BasicBlock::Create(
