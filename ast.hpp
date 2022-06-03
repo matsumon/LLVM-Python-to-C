@@ -125,7 +125,7 @@ public:
   bool value;
   ASTBoolean(bool value) : value(value) {}
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
-  llvm::Value * generateLLVM();
+  llvm::Value * generateLLVM() const;
 };
 
 
