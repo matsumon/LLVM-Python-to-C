@@ -394,9 +394,9 @@ void generateObjFile(std::string filename) {
     std::cerr << "Error opening optput file: " << ec.message() << std::endl;
     return;
   }
-  return;
   llvm::legacy::PassManager pm;
   targetMachine->addPassesToEmitFile(pm, fd, NULL, llvm::CodeGenFileType::CGFT_ObjectFile);
+  return;
   pm.run(*TheModule);
   fd.close();
 }
