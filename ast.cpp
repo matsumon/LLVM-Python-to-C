@@ -315,3 +315,47 @@ llvm::Value * ASTBinaryOperatorExpression::generateLLVM()const{
 void traverseLLVM(ASTNode* node){
     node->generateLLVM();
 }
+
+void generateObjFile(std::string filename) {
+  std::string targetTriple = llvm::sys::getDefaultTargetTriple();
+  std::cerr << "Target triple: " << targetTriple << std::endl;
+
+  llvm::InitializeAllTargetInfos();
+  llvm::InitializeAllTargets();
+  llvm::InitializeAllTargetMCs();
+  llvm::InitializeAllAsmParsers();
+  llvm::InitializeAllAsmPrinters();
+
+  std::string err;
+  const llvm::Target* target = llvm::TargetRegistry::lookupTarget(targetTriple, err);
+  if (!target) {
+    std::cerr << "Error looking up target: " << err << std::endl;
+    return;
+  }
+
+  std::string cpu = "generic";
+  std::string features = "";
+  llvm::TargetOptions options;
+  llvm::TargetMachine* targetMachine = target->createTargetMachine(
+    targetTriple,
+    cpu,
+    features,
+    options,
+    llvm::Optional<llvm::Reloc::Model>()
+  );
+
+  TheModule->setDataLayout(targetMachine->createDataLayout());
+  TheModule->setTargetTriple(targetTriple);
+
+  std::error_code ec;
+  llvm::raw_fd_ostream fd(filename, ec, llvm::sys::fs::OF_None);
+  if (ec) {
+    std::cerr << "Error opening optput file: " << ec.message() << std::endl;
+    return;
+  }
+
+  llvm::legacy::PassManager pm;
+  targetMachine->addPassesToEmitFile(pm, fd, NULL, llvm::CodeGenFileType::CGFT_ObjectFile);
+  pm.run(*TheModule);
+  fd.close();
+}

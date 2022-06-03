@@ -31,6 +31,15 @@
 #include "llvm/IR/Value.h"
 #include "llvm/Support/raw_os_ostream.h"
 
+#include "llvm/IR/LegacyPassManager.h"
+#include "llvm/Support/Host.h"
+#include "llvm/Support/TargetSelect.h"
+#include "llvm/Support/TargetRegistry.h"
+#include "llvm/Support/raw_ostream.h"
+#include "llvm/Support/FileSystem.h"
+#include "llvm/Target/TargetOptions.h"
+#include "llvm/Target/TargetMachine.h"
+
 // llvm::LLVMContext TheContext;
 // llvm::IRBuilder<> TheBuilder(TheContext);
 // llvm::Module* TheModule;
@@ -215,6 +224,7 @@ public:
   }
   virtual void generateGVSpec(std::string nodeName, std::string& gvSpec) const;
   llvm::Value * generateLLVM() const;
+  void generateObjFile(std::string filename);
 };
 
 
