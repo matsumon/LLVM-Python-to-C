@@ -204,6 +204,7 @@ public:
 class ASTBlock : public ASTNode {
 public:
   std::vector<const ASTStatement*> statements;
+  std::vector<const llvm::Value*> valueStatements;
   ASTBlock(const ASTStatement* statement) {
     this->statements.push_back(statement);
   }
