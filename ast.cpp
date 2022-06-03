@@ -280,42 +280,47 @@ llvm::Value * ASTBinaryOperatorExpression::generateLLVM()const{
     case DIVIDEDBY:
       return TheBuilder.CreateFDiv(newLHS, newRHS, "divtmp");
     case LT:
-      return TheBuilder.CreateFCmpULT(newLHS, newRHS, "lttmp");
+      newLHS = TheBuilder.CreateFCmpULT(newLHS, newRHS, "lttmp");
       return TheBuilder.CreateUIToFP(
         newLHS,
         llvm::Type::getFloatTy(TheContext),
         "ltbooltmp"
       );
     case LTE:
-      return TheBuilder.CreateFCmpULE(newLHS, newRHS, "ltetmp");
+      // return TheBuilder.CreateFCmpULE(newLHS, newRHS, "ltetmp");
+      newLHS = TheBuilder.CreateFCmpULE(newLHS, newRHS, "ltetmp");
       return TheBuilder.CreateUIToFP(
         newLHS,
         llvm::Type::getFloatTy(TheContext),
         "ltebooltmp"
       );
     case GT:
-      return TheBuilder.CreateFCmpUGT(newLHS, newRHS, "gttmp");
+      // return TheBuilder.CreateFCmpUGT(newLHS, newRHS, "gttmp");
+      newLHS = TheBuilder.CreateFCmpUGT(newLHS, newRHS, "gttmp");
       return TheBuilder.CreateUIToFP(
         newLHS,
         llvm::Type::getFloatTy(TheContext),
         "gtbooltmp"
       );
     case GTE:
-      return TheBuilder.CreateFCmpUGE(newLHS, newRHS, "gtetmp");
+      // return TheBuilder.CreateFCmpUGE(newLHS, newRHS, "gtetmp");
+      newLHS = TheBuilder.CreateFCmpUGE(newLHS, newRHS, "gtetmp");
       return TheBuilder.CreateUIToFP(
         newLHS,
         llvm::Type::getFloatTy(TheContext),
         "gtebooltmp"
       );
     case NEQ:
-      return TheBuilder.CreateFCmpUNE(newLHS, newRHS, "netmp");
+      // return TheBuilder.CreateFCmpUNE(newLHS, newRHS, "netmp");
+      newLHS = TheBuilder.CreateFCmpUNE(newLHS, newRHS, "netmp");
       return TheBuilder.CreateUIToFP(
         newLHS,
         llvm::Type::getFloatTy(TheContext),
         "nebooltmp"
       );
     case EQ:
-      return TheBuilder.CreateFCmpUEQ(newLHS, newRHS, "eqtmp");
+      // return TheBuilder.CreateFCmpUEQ(newLHS, newRHS, "eqtmp");
+      newLHS = TheBuilder.CreateFCmpUEQ(newLHS, newRHS, "eqtmp");
       return TheBuilder.CreateUIToFP(
         newLHS,
         llvm::Type::getFloatTy(TheContext),
@@ -329,6 +334,9 @@ llvm::Value * ASTBinaryOperatorExpression::generateLLVM()const{
 
 llvm::Value * ASTIfStatement::generateLLVM()const{
   llvm::Value* cond = condition->generateLLVM();
+   cond = TheBuilder.CreateFCmpONE(
+    cond, numericConstant(0), "ifcond"
+  );
   llvm::Function* currFn = TheBuilder.GetInsertBlock()->getParent();
 
   llvm::BasicBlock* ifBlockOne = llvm::BasicBlock::Create(
