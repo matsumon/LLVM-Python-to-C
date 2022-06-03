@@ -316,13 +316,14 @@ llvm::Value * ASTIfStatement::generateLLVM()const{
   llvm::Value* cond = condition->generateLLVM();
 
   llvm::Function* currFn = TheBuilder.GetInsertBlock()->getParent();
-  return NULL;
 
   llvm::BasicBlock* ifBlockOne = llvm::BasicBlock::Create(
     TheContext,
     "ifBlock",
     currFn
   );
+  return NULL;
+
   llvm::BasicBlock* elseBlockOne = llvm::BasicBlock::Create(
     TheContext,
     "elseBlock"
