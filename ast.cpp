@@ -173,20 +173,20 @@ llvm::Function* initializeLLVM(){
 
   TheModule = new llvm::Module("target", TheContext);
 
-  llvm::FunctionType* fooPrototype = llvm::FunctionType::get(
+  llvm::FunctionType* targetPrototype = llvm::FunctionType::get(
     llvm::Type::getFloatTy(TheContext), false
   );
-  llvm::Function* foo = llvm::Function::Create(
-    fooPrototype, llvm::GlobalValue::ExternalLinkage,
+  llvm::Function* target = llvm::Function::Create(
+    targetPrototype, llvm::GlobalValue::ExternalLinkage,
     "target", TheModule
   );
 
   llvm::BasicBlock* entryBlock = llvm::BasicBlock::Create(
-    TheContext, "entry", foo
+    TheContext, "entry", target
   );
   TheBuilder.SetInsertPoint(entryBlock);
 
-  return foo;
+  return target;
 }
 
 llvm::Value* numericConstant(float val){

@@ -10,7 +10,7 @@ extern llvm::LLVMContext TheContext;
 extern llvm::IRBuilder<> TheBuilder;
 extern llvm::Module* TheModule;
 int main() {
-  llvm::Function* foo = initializeLLVM();
+  llvm::Function* target = initializeLLVM();
   if (!yylex()) {
     if (programBlock) {
       // std::cout << generateGVSpec(programBlock);
@@ -19,8 +19,8 @@ int main() {
   }
   traverseLLVM(programBlock);
   TheBuilder.CreateRet(variableValue("return_value"));
-  llvm::verifyFunction(*foo);
-  // std::cout<<"Verify Function:  "<<llvm::verifyFunction(*foo)<<" "<<std::endl;
+  llvm::verifyFunction(*target);
+  // std::cout<<"Verify Function:  "<<llvm::verifyFunction(*target)<<" "<<std::endl;
   TheModule->print(llvm::outs(), NULL);
   generateObjFile("target.o");
 }
