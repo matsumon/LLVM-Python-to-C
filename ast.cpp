@@ -257,7 +257,8 @@ llvm::Value * ASTInteger::generateLLVM()const{
   return numericConstant((float)value);
 }
 llvm::Value * ASTBoolean::generateLLVM()const{
-  return numericConstant((float)value);
+  return llvm::Type::getFloatTy((float)value)
+  // return numericConstant((float)value);
 }
 llvm::Value * ASTBinaryOperatorExpression::generateLLVM()const{
   llvm::Value * newLHS = lhs->generateLLVM();
