@@ -258,6 +258,37 @@ llvm::Value * ASTInteger::generateLLVM()const{
 llvm::Value * ASTBoolean::generateLLVM()const{
   return numericConstant((float)value);
 }
+llvm::Value * ASTBinaryOperatorExpression::generateLLVM()const{
+  llvm::Value * newLHS = lhs->generateLLVM();
+  llvm::Value * newRHS = rhs->generateLLVM();
+  switch (op) {
+    case 'PLUS':
+      return TheBuilder.CreateFAdd(newLHS, newRHS, "addtmp");
+    case 'MINUS':
+      return TheBuilder.CreateFSub(newLHS, newRHS, "subtmp");
+    case 'TIMES':
+      return TheBuilder.CreateFMul(newLHS, newRHS, "multmp");
+    case 'DIVIDEDBY':
+      return TheBuilder.CreateFDiv(newLHS, newRHS, "divtmp");
+    case 'LT':
+      newLHS = TheBuilder.CreateFCmpULT(newLHS, newRHS, "lttmp");
+      return TheBuilder.CreateUIToFP(
+        newLHS,
+        llvm::Type::getFloatTy(TheContext),
+        "ltbooltmp"
+      );
+    case 'GT':
+      newLHS = TheBuilder.CreateFCmpULT(newRHS, newLHS, "lttmp");
+      return TheBuilder.CreateUIToFP(
+        newLHS,
+        llvm::Type::getFloatTy(TheContext),
+        "gtbooltmp"
+      );
+    default:
+      std::cerr << "Invalid operator: " << op << std::endl;
+      return NULL;
+  }
+}
 
 void traverseLLVM(ASTNode* node){
     node->generateLLVM();
