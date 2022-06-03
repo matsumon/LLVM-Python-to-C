@@ -261,7 +261,7 @@ llvm::Value * ASTBoolean::generateLLVM()const{
   newLHS = TheBuilder.CreateFCmpUGE(newLHS, numericConstant((float)1), "gtetmp");
   return TheBuilder.CreateUIToFP(
     newLHS,
-    llvm::Type::getFloatTy(TheContext),
+    llvm::Type::getBFloatTy(TheContext),
     "gtebooltmp"
   );
   // return numericConstant((float)value);
