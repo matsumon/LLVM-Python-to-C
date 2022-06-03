@@ -262,22 +262,22 @@ llvm::Value * ASTBinaryOperatorExpression::generateLLVM()const{
   llvm::Value * newLHS = lhs->generateLLVM();
   llvm::Value * newRHS = rhs->generateLLVM();
   switch (op) {
-    case 'PLUS':
+    case PLUS:
       return TheBuilder.CreateFAdd(newLHS, newRHS, "addtmp");
-    case 'MINUS':
+    case MINUS:
       return TheBuilder.CreateFSub(newLHS, newRHS, "subtmp");
-    case 'TIMES':
+    case TIMES:
       return TheBuilder.CreateFMul(newLHS, newRHS, "multmp");
-    case 'DIVIDEDBY':
+    case DIVIDEDBY:
       return TheBuilder.CreateFDiv(newLHS, newRHS, "divtmp");
-    case 'LT':
+    case LT:
       newLHS = TheBuilder.CreateFCmpULT(newLHS, newRHS, "lttmp");
       return TheBuilder.CreateUIToFP(
         newLHS,
         llvm::Type::getFloatTy(TheContext),
         "ltbooltmp"
       );
-    case 'GT':
+    case GT:
       newLHS = TheBuilder.CreateFCmpULT(newRHS, newLHS, "lttmp");
       return TheBuilder.CreateUIToFP(
         newLHS,
