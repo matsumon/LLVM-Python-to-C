@@ -20,7 +20,7 @@ int main() {
   traverseLLVM(programBlock);
   TheBuilder.CreateRet(variableValue("return_value"));
   llvm::verifyFunction(*target);
-  // std::cout<<"Verify Function:  "<<llvm::verifyFunction(*target)<<" "<<std::endl;
+  std::cout<<"Verify Function:  "<<llvm::verifyFunction(*target)<<" "<<std::endl;
   TheModule->print(llvm::outs(), NULL);
   generateObjFile("target.o");
 }
