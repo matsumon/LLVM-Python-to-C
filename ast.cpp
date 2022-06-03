@@ -323,13 +323,10 @@ llvm::Value * ASTIfStatement::generateLLVM()const{
     currFn
   );
 
-  llvm::BasicBlock* elseBlockOne;
-  if(elseBlock){
-    elseBlockOne = llvm::BasicBlock::Create(
-      TheContext,
-      "elseBlock"
-    );
-  }
+  llvm::BasicBlock* elseBlockOne = llvm::BasicBlock::Create(
+    TheContext,
+    "elseBlock"
+  );
   llvm::BasicBlock* continuationBlock = llvm::BasicBlock::Create(
     TheContext,
     "continuationBlock"
@@ -342,10 +339,9 @@ llvm::Value * ASTIfStatement::generateLLVM()const{
   llvm::Value* ifStatement = ifBlock->generateLLVM();
   // llvm::Value* ifBlockStmt = assignmentStatement("c", aTimesB);
   TheBuilder.CreateBr(continuationBlock);
-  if(elseBlock){
-    currFn->getBasicBlockList().push_back(elseBlockOne);
-    TheBuilder.SetInsertPoint(elseBlockOne);
-  }
+
+  currFn->getBasicBlockList().push_back(elseBlockOne);
+  TheBuilder.SetInsertPoint(elseBlockOne);
   if(elseBlock){
     llvm::Value* elseStatment = elseBlock->generateLLVM();
   }
