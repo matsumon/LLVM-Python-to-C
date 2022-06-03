@@ -1,3 +1,4 @@
-return_value = 3
+n = 8
 if True:
-    return_value = 2
+    n = n * 2
+return_value = n
