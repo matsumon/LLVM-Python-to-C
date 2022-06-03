@@ -291,7 +291,7 @@ llvm::Value * ASTBinaryOperatorExpression::generateLLVM()const{
         llvm::Type::getFloatTy(TheContext),
         "gtbooltmp"
       );
-    case LT:
+    case GTE:
       newLHS = TheBuilder.CreateFCmpUGE(newLHS, newRHS, "gtetmp");
       return TheBuilder.CreateUIToFP(
         newLHS,
