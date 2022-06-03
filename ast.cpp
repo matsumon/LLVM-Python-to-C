@@ -298,6 +298,13 @@ llvm::Value * ASTBinaryOperatorExpression::generateLLVM()const{
         llvm::Type::getFloatTy(TheContext),
         "gtebooltmp"
       );
+    case NEQ:
+      newLHS = TheBuilder.CreateFCmpUNE()(newLHS, newRHS, "netmp");
+      return TheBuilder.CreateUIToFP(
+        newLHS,
+        llvm::Type::getFloatTy(TheContext),
+        "nebooltmp"
+      );
     default:
       std::cerr << "Invalid operator: " << op << std::endl;
       return NULL;
