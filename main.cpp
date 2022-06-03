@@ -22,8 +22,8 @@ int main(int argc, char **argv) {
   llvm::verifyFunction(*target);
   // std::cout<<"Verify Function:  "<<llvm::verifyFunction(*target)<<" "<<std::endl;
   TheModule->print(llvm::outs(), NULL);
-  if(argc > 0){
-    generateObjFile(argv[0]);
+  if(argc > 1){
+    generateObjFile(argv[1]);
   }else{
     generateObjFile("target.o");
   }
