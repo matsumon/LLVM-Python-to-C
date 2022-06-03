@@ -350,7 +350,7 @@ llvm::Value * ASTIfStatement::generateLLVM()const{
 
   currFn->getBasicBlockList().push_back(continuationBlock);
   TheBuilder.SetInsertPoint(continuationBlock);
-
+  return NULL;
   return continuationBlock;
 }
 
