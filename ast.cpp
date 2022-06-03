@@ -178,7 +178,7 @@ llvm::Function* initializeLLVM(){
   );
   llvm::Function* foo = llvm::Function::Create(
     fooPrototype, llvm::GlobalValue::ExternalLinkage,
-    "foo", TheModule
+    "target", TheModule
   );
 
   llvm::BasicBlock* entryBlock = llvm::BasicBlock::Create(
